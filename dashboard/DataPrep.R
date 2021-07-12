@@ -14,6 +14,7 @@ library(tidyverse)
 library(gsheet)
 library(stringr)
 library(tidytext)
+library(wordcloud2)
 
 ### 1) Dataframes ----
 ### >> a) Surveys ----
@@ -26,13 +27,25 @@ question_4 =
          -`What advice would you give your past-self or a young researcher from your country?`,
          -`Describe your dream of the future as a tropical scientist in a tweet (up to 280 characters).`) %>%
   unnest_tokens(word,
-                `Tell us a short story about your background in science! Do you want to share an image or a video that represents your story as a tropical/subtropical ecologist? Go ahead!`)
-
-question_4 %>%
+                `Tell us a short story about your background in science! Do you want to share an image or a video that represents your story as a tropical/subtropical ecologist? Go ahead!`) %>%
   filter(Language == "EN") %>%
   anti_join(stop_words, 
             by=c("word"="word")) %>%
   left_join(get_sentiments("bing")) %>%
-  count(word, sentiment, sort = TRUE)
+  count(word, sentiment, sort = TRUE) %>%
+  rename(`freq` = `n`) %>%
+  mutate(colour = case_when(sentiment == "negative" ~ '"red"',
+                            sentiment == "positive" ~ '"green"',
+                            is.na(sentiment) ~ '"grey50"'))
+
+wordcloud2(question_4[,c(1,3)],
+           color = question_4[,4],
+           backgroundColor = "black")
+
+
+wordcloud2(word_counts(), size = 1.6, fontFamily = "Courier",
+           color=rep_len(pal[2:4], nrow(word_counts())), backgroundColor = "black")
+
+wordcloud2(demoFreq)
 
 # End of script ----
