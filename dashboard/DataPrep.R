@@ -34,18 +34,26 @@ question_4 =
   left_join(get_sentiments("bing")) %>%
   count(word, sentiment, sort = TRUE) %>%
   rename(`freq` = `n`) %>%
-  mutate(colour = case_when(sentiment == "negative" ~ '"red"',
-                            sentiment == "positive" ~ '"green"',
-                            is.na(sentiment) ~ '"grey50"'))
+  mutate(colour = as.character(case_when(sentiment == "negative" ~ "red",
+                                         sentiment == "positive" ~ "#E00008",
+                                         is.na(sentiment) ~ "white")))
 
 wordcloud2(question_4[,c(1,3)],
-           color = question_4[,4],
-           backgroundColor = "black")
+           color = ifelse(question_4[, 3] > 3, 'red', 'skyblue'),
+           backgroundColor = "black",
+           shuffle = T)
+
+wordcloud::wordcloud(question_4$word,
+                     question_4$freq,
+                     min.freq = 2)
 
 
 wordcloud2(word_counts(), size = 1.6, fontFamily = "Courier",
            color=rep_len(pal[2:4], nrow(word_counts())), backgroundColor = "black")
 
 wordcloud2(demoFreq)
+
+pal <- c("black", "#E00008", "#858B8E", "white")
+rep_len(pal[2:4], nrow(question_4))
 
 # End of script ----
