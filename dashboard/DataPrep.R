@@ -51,9 +51,9 @@ question_4 =
                             'neutral', sentiment)) %>% #rename 'non-sentiment'
   filter(str_detect(word,
                     '[:alpha:]')) %>% #remove numbers
-  acast(word ~ sentiment, value.var = "freq", fill = 0) %>% #reshape
-  comparison.cloud(colors = sent_pal,
-                   max.words = 100, scale=c(3.5,0.50))
+  acast(word ~ sentiment, value.var = "freq", fill = 0) #%>% #reshape
+# comparison.cloud(colors = sent_pal,
+#                  max.words = 100, scale=c(3.5,0.50))
 
 ### >> b) Question 5 ----
 
@@ -80,9 +80,9 @@ question_5 =
                             'neutral', sentiment)) %>% #rename 'non-sentiment'
   filter(str_detect(word,
                     '[:alpha:]')) %>% #remove numbers
-  acast(word ~ sentiment, value.var = "freq", fill = 0) %>% #reshape
-  comparison.cloud(colors = sent_pal,
-                   max.words = 100, scale=c(3.5,0.50))
+  acast(word ~ sentiment, value.var = "freq", fill = 0) #%>% #reshape
+# comparison.cloud(colors = sent_pal,
+#                  max.words = 100, scale=c(3.5,0.50))
 
 
 ### >> b) Question 6 ----
@@ -110,9 +110,9 @@ question_6 =
                             'neutral', sentiment)) %>% #rename 'non-sentiment'
   filter(str_detect(word,
                     '[:alpha:]')) %>% #remove numbers
-  acast(word ~ sentiment, value.var = "freq", fill = 0) %>% #reshape
-  comparison.cloud(colors = sent_pal,
-                   max.words = 100, scale=c(3.5,0.50))
+  acast(word ~ sentiment, value.var = "freq", fill = 0) #%>% #reshape
+  # comparison.cloud(colors = sent_pal,
+  #                  max.words = 100, scale=c(3.5,0.50))
 
 
 # End of script ----
