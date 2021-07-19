@@ -19,7 +19,10 @@ library(reshape2)
 
 ### >> b) Colours ----
 
-sent_pal = c('red', 'grey50', 'green')
+sent_pal = c('#6526ab', #negative
+             '#ead067', #neutral
+             '#2b7219' #positive
+             )
 
 ### 1) Dataframes ----
 
