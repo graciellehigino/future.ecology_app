@@ -85,7 +85,7 @@ survey %>%
 Future
 =====================================  
 
-Column {data-width=600}
+Column {.tabset}
 -------------------------------------
 
 ### Sentiment
@@ -94,6 +94,14 @@ Column {data-width=600}
 comparison.cloud(question_6,
                  colors = sent_pal,
                  max.words = 100, scale=c(3.5,0.50))
+```
+
+### Sentiment - remixed
+    
+```{r}
+
+
+
 ```
 
 Column {data-width=400}
