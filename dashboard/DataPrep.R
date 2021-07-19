@@ -14,7 +14,12 @@ library(tidyverse)
 library(gsheet)
 library(stringr)
 library(tidytext)
-library(wordcloud2)
+library(wordcloud)
+library(reshape2)
+
+### >> b) Colours ----
+
+sent_pal = c('red', 'grey50', 'green')
 
 ### 1) Dataframes ----
 ### >> a) Surveys ----
@@ -36,24 +41,15 @@ question_4 =
   rename(`freq` = `n`) %>%
   mutate(colour = as.character(case_when(sentiment == "negative" ~ "red",
                                          sentiment == "positive" ~ "#E00008",
-                                         is.na(sentiment) ~ "white")))
-
-wordcloud2(question_4[,c(1,3)],
-           color = ifelse(question_4[, 3] > 3, 'red', 'skyblue'),
-           backgroundColor = "black",
-           shuffle = T)
-
-wordcloud::wordcloud(question_4$word,
-                     question_4$freq,
-                     min.freq = 2)
+                                         is.na(sentiment) ~ "white"))) %>%
+  mutate(sentiment = ifelse(is.na(sentiment),
+                            'neutral', sentiment)) %>% #rename 'non-sentiment'
+  filter(str_detect(word,
+                    '[:alpha:]')) %>% #remove numbers
+  acast(word ~ sentiment, value.var = "freq", fill = 0) %>% #reshape
+  comparison.cloud(colors = sent_pal,
+                   max.words = 100, scale=c(3.5,0.50))
 
 
-wordcloud2(word_counts(), size = 1.6, fontFamily = "Courier",
-           color=rep_len(pal[2:4], nrow(word_counts())), backgroundColor = "black")
-
-wordcloud2(demoFreq)
-
-pal <- c("black", "#E00008", "#858B8E", "white")
-rep_len(pal[2:4], nrow(question_4))
 
 # End of script ----
