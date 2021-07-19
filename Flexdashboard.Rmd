@@ -30,9 +30,11 @@ comparison.cloud(question_4,
    
 Column {data-width=400}
 -------------------------------------
-   
-**Tell us a short story about your background in science! Do you want to share an image or a video that represents your story as a tropical/subtropical ecologist? Go ahead!**
- 
+
+```{r  out.width = "100%"}
+include_graphics('images/future_scientist.jpg') 
+```
+
 ### Full Responses
 
 Note some answers have been translated from their original language or altered by the request of the correspondent
@@ -66,6 +68,10 @@ comparison.cloud(question_5,
 Column {data-width=400}
 -------------------------------------
    
+```{r  out.width = "100%"}
+include_graphics('images/future_scientist.jpg') 
+```
+
 ### Full Responses
 
 Note some answers have been translated from their original language or altered by the request of the correspondent
@@ -106,6 +112,10 @@ comparison.cloud(question_6,
 
 Column {data-width=400}
 -------------------------------------
+   
+```{r  out.width = "100%"}
+include_graphics('images/future_scientist.jpg') 
+```
    
 ### Full Responses
 
