@@ -11,8 +11,75 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 library(flexdashboard)
 library(knitr)
 library(kableExtra)
+library(palettetown)
 source("dashboard/DataPrep.R")
 ```
+
+Dinosaurs
+=====================================  
+
+Column {data-width=600}
+-------------------------------------
+    
+### Sentiment
+    
+```{r}
+comparison.cloud(question_4,
+                 colors = sent_pal,
+                 max.words = 100, scale=c(3.5,0.50))
+```
+   
+Column {data-width=400}
+-------------------------------------
+
+```{r  out.width = "100%"}
+include_graphics('images/future_scientist.jpg') 
+```
+
+### Career Stage
+
+```{r  out.width = "100%"}
+
+survey %>%
+  filter(`Translated to` == "EN") %>%
+  count(`What is your career stage?`) %>%
+  na.omit() %>%
+  summarise(percentage = n/sum(n)*100,
+            stage = `What is your career stage?`) %>%
+  ggplot() +
+  geom_col(aes(x = 2,
+               y = percentage,
+               fill = stage)) +
+  xlim(c(0.7, 2.5)) +
+  ylim(c(0, 100)) +
+  coord_polar(theta = 'y') +
+  scale_fill_poke(guide = guide_legend(title = "Career stage"),
+                  pokemon = 134, spread = 6) +
+  theme_void()
+
+```
+
+### At home?
+
+```{r  out.width = "100%"}
+survey %>%
+  filter(`Translated to` == "EN") %>%
+  count(`Are you studying in your home country?`) %>%
+  na.omit() %>%
+  summarise(percentage = n/sum(n)*100,
+            home = `Are you studying in your home country?`) %>%
+  ggplot() +
+  geom_col(aes(x = 2,
+               y = percentage,
+               fill = home)) +
+  xlim(c(0.7, 2.5)) +
+  ylim(c(0, 100)) +
+  coord_polar(theta = 'y') +
+  scale_fill_poke(guide = guide_legend(title = "Studying at home?"),
+                  pokemon = 13, spread = 2) +
+  theme_void()
+```
+
 
 Past
 =====================================  
