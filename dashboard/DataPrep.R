@@ -1,7 +1,5 @@
 #' ------------------------------------------------------------------#
-#'  PARTICIPANT AFFILIATION MAP
-#'  script for importing and prepearing data to be used for the Alumni
-#'  shiny app. This data is to be used for the PFTC website.
+#'  FUTURE ECOLOGY APP
 #'  Developed by: TANYA STRYDOM
 #'  Reachable at tanya.strydom@icloud.com
 #'  For script queries and bug fixes if needed
