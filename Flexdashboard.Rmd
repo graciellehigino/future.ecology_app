@@ -12,6 +12,7 @@ library(flexdashboard)
 library(knitr)
 library(kableExtra)
 library(palettetown)
+library(patchwork)
 source("dashboard/DataPrep.R")
 ```
 
@@ -34,7 +35,67 @@ ggplot() +
           fill = "pink",
           alpha = 0.9,
           colour = NA) +
-  theme_void()
+  theme_void() + 
+  inset_element(png::readPNG("images/Coelophysis.png", native = TRUE), #Coelophysis
+                left = 0.0,
+                bottom = 0.0,
+                right = 0.1,
+                top = 0.30, 
+                align_to = 'full') + theme_void() +
+  inset_element(png::readPNG("images/Trex.png", native = TRUE), #TRex
+                left = 0.0,
+                bottom = 0.6,
+                right = 0.2,
+                top = 0.8, 
+                align_to = 'full') + theme_void() +
+  inset_element(png::readPNG("images/Velociraptor.png", native = TRUE), #Veloci
+                left = 0.7,
+                bottom = 0.7,
+                right = 0.9,
+                top = 0.9, 
+                align_to = 'full') + theme_void() +
+  inset_element(png::readPNG("images/Parasaur.png", native = TRUE), #Parasaur
+                left = 0.4,
+                bottom = 0.05,
+                right = 0.6,
+                top = 0.25, 
+                align_to = 'full') + theme_void() +
+  inset_element(png::readPNG("images/Coelophysis.png", native = TRUE), #Bronto
+                left = 0.0,
+                bottom = 0.21,
+                right = 0.07,
+                top = 0.30, 
+                align_to = 'full') + theme_void() +
+  inset_element(png::readPNG("images/Coelophysis.png", native = TRUE), #Meg
+                left = 0.0,
+                bottom = 0.21,
+                right = 0.07,
+                top = 0.30, 
+                align_to = 'full') + theme_void() +
+  inset_element(png::readPNG("images/Coelophysis.png", native = TRUE), #pterdoactyl
+                left = 0.0,
+                bottom = 0.21,
+                right = 0.07,
+                top = 0.30, 
+                align_to = 'full') + theme_void() +
+  inset_element(png::readPNG("images/Coelophysis.png", native = TRUE), #pterosaurus
+                left = 0.0,
+                bottom = 0.21,
+                right = 0.07,
+                top = 0.30, 
+                align_to = 'full') + theme_void() +
+  inset_element(png::readPNG("images/Coelophysis.png", native = TRUE), #tricera
+                left = 0.0,
+                bottom = 0.21,
+                right = 0.07,
+                top = 0.30, 
+                align_to = 'full') + theme_void() +
+  inset_element(png::readPNG("images/Coelophysis.png", native = TRUE), #archi
+                left = 0.0,
+                bottom = 0.21,
+                right = 0.07,
+                top = 0.30, 
+                align_to = 'full') + theme_void()
 
 ```
 
