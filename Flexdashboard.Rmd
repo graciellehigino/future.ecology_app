@@ -18,7 +18,7 @@ source("dashboard/DataPrep.R")
 Dinosaurs
 =====================================  
 
-Column {data-width=600}
+Column {data-width=70%}
 -------------------------------------
     
 ### Sentiment
@@ -29,7 +29,7 @@ comparison.cloud(question_4,
                  max.words = 100, scale=c(3.5,0.50))
 ```
    
-Column {data-width=400}
+Column {data-width=30%}
 -------------------------------------
 
 ```{r  out.width = "100%"}
@@ -38,7 +38,7 @@ include_graphics('images/future_scientist.jpg')
 
 ### Career Stage
 
-```{r  out.width = "100%"}
+```{r}
 
 survey %>%
   filter(`Translated to` == "EN") %>%
@@ -61,7 +61,7 @@ survey %>%
 
 ### At home?
 
-```{r  out.width = "100%"}
+```{r}
 survey %>%
   filter(`Translated to` == "EN") %>%
   count(`Are you studying in your home country?`) %>%
