@@ -44,6 +44,7 @@ Note some answers have been translated from their original language or altered b
 survey %>%
   filter(`Translated to` == "EN") %>%
   select(`Tell us a short story about your background in science! Do you want to share an image or a video that represents your story as a tropical/subtropical ecologist? Go ahead!`) %>%
+  na.omit() %>%
   kable(align = "c")%>%
   kable_styling(bootstrap_options = c("striped", "condensed","responsive", "bordered")) %>%
   row_spec(0, background = "pink", align = "c", bold = TRUE) #%>%
@@ -80,8 +81,9 @@ Note some answers have been translated from their original language or altered b
 
 survey %>%
   filter(`Translated to` == "EN") %>%
-  select(`What advice would you give your past-self or a young researcher from your country?`) %>%
-  kable(align = "c")%>%
+  select(`What advice would you give your past-self or a young researcher from your country?`)  %>%
+  na.omit() %>%
+  kable(align = "c") %>%
   kable_styling(bootstrap_options = c("striped", "condensed","responsive", "bordered")) %>%
   row_spec(0, background = "pink", align = "c", bold = TRUE) #%>%
   #scroll_box(width = "500px", height = "400px") 
@@ -125,7 +127,8 @@ Note some answers have been translated from their original language or altered b
 
 survey %>%
   filter(`Translated to` == "EN") %>%
-  select(`Describe your dream of the future as a tropical scientist in a tweet (up to 280 characters).`) %>%
+  select(`Describe your dream of the future as a tropical scientist in a tweet (up to 280 characters).`)  %>%
+  na.omit() %>%
   kable(align = "c")%>%
   kable_styling(bootstrap_options = c("striped", "condensed","responsive", "bordered")) %>%
   row_spec(0, background = "pink", align = "c", bold = TRUE) #%>%
