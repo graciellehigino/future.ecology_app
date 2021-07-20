@@ -14,13 +14,17 @@ library(stringr)
 library(tidytext)
 library(wordcloud)
 library(reshape2)
+library(cartography)
+library(sf)
+library(spData)
+library(geosphere)
 
 ### >> b) Colours ----
 
 sent_pal = c('#6526ab', #negative
              '#ead067', #neutral
              '#2b7219' #positive
-             )
+)
 
 ### 1) Dataframes ----
 
@@ -112,8 +116,30 @@ question_6 =
   filter(str_detect(word,
                     '[:alpha:]')) %>% #remove numbers
   acast(word ~ sentiment, value.var = "freq", fill = 0) #%>% #reshape
-  # comparison.cloud(colors = sent_pal,
-  #                  max.words = 100, scale=c(3.5,0.50))
+# comparison.cloud(colors = sent_pal,
+#                  max.words = 100, scale=c(3.5,0.50))
 
+
+### 2) Maps! ----
+
+locations = 
+  world %>%
+  right_join(.,
+            tribble(
+              ~Country,
+              "South Africa",
+              "Ghana",
+              "Brazil",
+              "Columbia",
+              "Venezuela",
+              "Costa Rica",
+              "Canada",
+              "Sweden",
+              "Finland",
+              "United States",
+              "Ecuador",
+              "Bolivia"
+            ),
+            by = c("name_long" = "Country"))
 
 # End of script ----

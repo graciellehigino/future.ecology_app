@@ -20,15 +20,24 @@ Dinosaurs
 
 Column {data-width=70%}
 -------------------------------------
-    
-### Sentiment
-    
+
+### Where have the dinosaurs been?
+
 ```{r}
-comparison.cloud(question_4,
-                 colors = sent_pal,
-                 max.words = 100, scale=c(3.5,0.50))
+
+ggplot() +
+  geom_sf(data = world,
+          aes(geometry = geom),
+          colour = NA) +
+  geom_sf(data = locations,
+          aes(geometry = geom),
+          fill = "pink",
+          alpha = 0.9,
+          colour = NA) +
+  theme_void()
+
 ```
-   
+
 Column {data-width=30%}
 -------------------------------------
 
@@ -83,18 +92,18 @@ survey %>%
 
 Past
 =====================================  
-    
+
 Column {data-width=600}
 -------------------------------------
-    
+
 ### Sentiment
-    
+
 ```{r}
 comparison.cloud(question_4,
                  colors = sent_pal,
                  max.words = 100, scale=c(3.5,0.50))
 ```
-   
+
 Column {data-width=400}
 -------------------------------------
 
@@ -105,7 +114,7 @@ include_graphics('images/future_scientist.jpg')
 ### Full Responses
 
 Note some answers have been translated from their original language or altered by the request of the correspondent
-    
+
 ```{r}
 
 survey %>%
@@ -115,13 +124,13 @@ survey %>%
   kable(align = "c")%>%
   kable_styling(bootstrap_options = c("striped", "condensed","responsive", "bordered")) %>%
   row_spec(0, background = "pink", align = "c", bold = TRUE) #%>%
-  #scroll_box(width = "500px", height = "400px") 
+#scroll_box(width = "500px", height = "400px") 
 
 ```
 
 Present
 =====================================     
-   
+
 Column {data-width=600}
 -------------------------------------
 
@@ -135,7 +144,7 @@ comparison.cloud(question_5,
 
 Column {data-width=400}
 -------------------------------------
-   
+
 ```{r  out.width = "100%"}
 include_graphics('images/future_scientist.jpg') 
 ```
@@ -143,7 +152,7 @@ include_graphics('images/future_scientist.jpg')
 ### Full Responses
 
 Note some answers have been translated from their original language or altered by the request of the correspondent
-    
+
 ```{r}
 
 survey %>%
@@ -153,7 +162,7 @@ survey %>%
   kable(align = "c") %>%
   kable_styling(bootstrap_options = c("striped", "condensed","responsive", "bordered")) %>%
   row_spec(0, background = "pink", align = "c", bold = TRUE) #%>%
-  #scroll_box(width = "500px", height = "400px") 
+#scroll_box(width = "500px", height = "400px") 
 
 ```
 
@@ -172,7 +181,7 @@ comparison.cloud(question_6,
 ```
 
 ### Sentiment - remixed
-    
+
 ```{r}
 
 
@@ -181,15 +190,15 @@ comparison.cloud(question_6,
 
 Column {data-width=400}
 -------------------------------------
-   
+
 ```{r  out.width = "100%"}
 include_graphics('images/future_scientist.jpg') 
 ```
-   
+
 ### Full Responses
 
 Note some answers have been translated from their original language or altered by the request of the correspondent
-    
+
 ```{r}
 
 survey %>%
@@ -199,6 +208,6 @@ survey %>%
   kable(align = "c")%>%
   kable_styling(bootstrap_options = c("striped", "condensed","responsive", "bordered")) %>%
   row_spec(0, background = "pink", align = "c", bold = TRUE) #%>%
-  #scroll_box(width = "500px", height = "400px") 
+#scroll_box(width = "500px", height = "400px") 
 
 ``` 
