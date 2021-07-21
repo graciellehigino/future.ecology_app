@@ -130,7 +130,7 @@ locations =
               "South Africa",
               "Ghana",
               "Brazil",
-              "Columbia",
+              "Colombia",
               "Venezuela",
               "Costa Rica",
               "Canada",

@@ -22,6 +22,8 @@ Dinosaurs
 Column {data-width=70%}
 -------------------------------------
 
+More like what places we've come from, been and currently are that allow us to do the research that sparks joy.
+
 ### Where have the dinosaurs been?
 
 ```{r}
@@ -36,6 +38,7 @@ ggplot() +
           alpha = 0.9,
           colour = NA) +
   theme_void() + 
+  theme(plot.margin = margin(0, 0, 0, 0)) +
   inset_element(png::readPNG("images/Coelophysis.png", native = TRUE), #Coelophysis
                 left = 0.0,
                 bottom = 0.0,
@@ -98,6 +101,7 @@ ggplot() +
                 align_to = 'full') + theme_void()
 
 ```
+
 
 Column {data-width=30%}
 -------------------------------------
@@ -243,11 +247,30 @@ comparison.cloud(question_6,
 
 ### Sentiment - remixed
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 
+tweet <- gsheet2tbl('https://docs.google.com/spreadsheets/d/1vrsV972IK4lQWnZczPs29L-yZ75Abc4OdNEyrG-ZsnY/edit?usp=sharing') %>%
+  unnest_tokens(word,
+                `Re-imagined`) %>%
+  anti_join(stop_words, 
+            by=c("word"="word")) %>%
+  left_join(get_sentiments("bing")) %>%
+  count(word, sentiment, sort = TRUE) %>%
+  rename(`freq` = `n`) %>%
+  mutate(colour = as.character(case_when(sentiment == "negative" ~ "red",
+                                         sentiment == "positive" ~ "#E00008",
+                                         is.na(sentiment) ~ "white"))) %>%
+  mutate(sentiment = ifelse(is.na(sentiment),
+                            'neutral', sentiment)) %>% #rename 'non-sentiment'
+  filter(str_detect(word,
+                    '[:alpha:]')) %>% #remove numbers
+  acast(word ~ sentiment, value.var = "freq", fill = 0) %>%
+  comparison.cloud(colors = sent_pal,
+                   max.words = 100, scale=c(3.5,0.50))
 
 
 ```
+
 
 Column {data-width=400}
 -------------------------------------
