@@ -28,7 +28,8 @@ sent_pal = c('#6526ab', #negative
 
 ### 1) Dataframes ----
 
-survey <- read.csv("data/ATBC_initial_survey.csv")
+survey <- read.csv("data/ATBC_initial_survey.csv",
+                   check.names=FALSE)
 
 ### >> a) Question 4 ----
 
