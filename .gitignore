@@ -41,3 +41,4 @@ vignettes/*.pdf
 
 # MacOS nonsense
 .DS_Store
+data/ATBC_initial_survey.csv
