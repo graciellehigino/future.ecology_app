@@ -28,7 +28,7 @@ sent_pal = c('#6526ab', #negative
 
 ### 1) Dataframes ----
 
-survey <- gsheet2tbl('https://docs.google.com/spreadsheets/d/1V4AdCLm6UgTqO7UKjBFwAogBvPi1zWEjBZ37A2f4dcI/edit?usp=sharing')
+survey <- read.csv("data/ATBC_initial_survey.csv")
 
 ### >> a) Question 4 ----
 
